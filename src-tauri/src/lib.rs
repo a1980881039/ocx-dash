@@ -1,4 +1,6 @@
 use std::path::PathBuf;
+#[cfg(windows)]
+use std::os::windows::process::CommandExt;
 
 #[tauri::command]
 fn get_admin_token() -> Result<String, String> {
@@ -28,6 +30,8 @@ async fn fetch_ocx(path: String, token: Option<String>) -> Result<serde_json::Va
     let url = format!("http://127.0.0.1:10100{}", path);
 
     let mut cmd = std::process::Command::new("curl.exe");
+    #[cfg(windows)]
+    cmd.creation_flags(0x08000000); // CREATE_NO_WINDOW: 刷新时不弹出控制台窗口
     cmd.arg("-s").arg("-w").arg("\n%{http_code}").arg(&url);
     if !admin_token.is_empty() {
         cmd.arg("-H").arg(format!("Authorization: Bearer {}", admin_token));
