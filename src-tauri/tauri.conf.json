@@ -1,0 +1,27 @@
+{
+  "productName": "ocx-dash",
+  "version": "0.1.0",
+  "identifier": "com.ocx-dash.app",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:1420",
+    "beforeDevCommand": "pnpm dev:web",
+    "beforeBuildCommand": "pnpm build:web"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "OpenCodex Quota",
+        "width": 520,
+        "height": 640,
+        "resizable": true,
+        "decorations": true,
+        "alwaysOnTop": true,
+        "transparent": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  }
+}

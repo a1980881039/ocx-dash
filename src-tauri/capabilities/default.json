@@ -1,0 +1,10 @@
+{
+  "identifier": "default",
+  "description": "Default capabilities for ocx-dash",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default"
+  ]
+}
